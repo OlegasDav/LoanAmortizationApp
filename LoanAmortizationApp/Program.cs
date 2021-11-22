@@ -34,7 +34,7 @@ namespace LoanAmortizationApp
                         var interestRate = Convert.ToDouble(Console.ReadLine());
 
                         Console.Write("Nurodykite men. mokejimo diena (1-31): ");
-                        var daypayment = Convert.ToInt32(Console.ReadLine());
+                        var dayPayment = Convert.ToInt32(Console.ReadLine());
 
                         Console.WriteLine();
                         Console.WriteLine($"Date || MonthlyPayment || Interest || Principal || Balance");
@@ -44,7 +44,7 @@ namespace LoanAmortizationApp
                             LoanAmount = loanAmount,
                             InterestRate = interestRate,
                             LoanTerm = loanTerm,
-                            DayPayment = daypayment
+                            DayPayment = dayPayment
                         };
 
                         PrintLoanAmortizationSchedule(loan);
@@ -59,12 +59,10 @@ namespace LoanAmortizationApp
                         break;
                 }
             }
-
         }
 
         public static decimal CalculateTotalPayment(Loan loan)
         {
-
             decimal totalPayment;
             decimal monthlyPayment = CalculateMonthlyPayment(loan);
 
@@ -91,7 +89,7 @@ namespace LoanAmortizationApp
 
             date = DayOfMonthFromDateTime(date, loan.DayPayment);
 
-            for (var i = 1; i < loan.LoanTerm + 1; i++)
+            for (var i = 0; i < loan.LoanTerm; i++)
             {
                 var interest = (decimal)((loan.InterestRate / 100) / 12) * balance;
                 var principal = monthlyPayment - interest;
@@ -105,8 +103,6 @@ namespace LoanAmortizationApp
         }
 
         public static DateTime DayOfMonthFromDateTime(DateTime dateTime, int day)
-        {
-            return new DateTime(dateTime.Year, dateTime.Month, day);
-        }
+            => new(dateTime.Year, dateTime.Month, day);
     }
 }
