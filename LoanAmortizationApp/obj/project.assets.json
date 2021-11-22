@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "Contracts >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\oldav\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\oldav\\Documents\\BIT mokymai\\4_NET\\1_Paskaitos\\Projektai\\LoanAmortization\\LoanAmortizationApp\\LoanAmortizationApp\\LoanAmortizationApp.csproj",
+      "projectName": "LoanAmortizationApp",
+      "projectPath": "C:\\Users\\oldav\\Documents\\BIT mokymai\\4_NET\\1_Paskaitos\\Projektai\\LoanAmortization\\LoanAmortizationApp\\LoanAmortizationApp\\LoanAmortizationApp.csproj",
+      "packagesPath": "C:\\Users\\oldav\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\oldav\\Documents\\BIT mokymai\\4_NET\\1_Paskaitos\\Projektai\\LoanAmortization\\LoanAmortizationApp\\LoanAmortizationApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\oldav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Users\\oldav\\Documents\\BIT mokymai\\4_NET\\1_Paskaitos\\Projektai\\LoanAmortization\\LoanAmortizationApp\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\oldav\\Documents\\BIT mokymai\\4_NET\\1_Paskaitos\\Projektai\\LoanAmortization\\LoanAmortizationApp\\Contracts\\Contracts.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
