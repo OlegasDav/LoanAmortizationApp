@@ -71,36 +71,16 @@ namespace LoanAmortizationApp
             }
         }
 
-        public static decimal CalculateTotalPayment(Loan loan)
-        {
-            decimal totalPayment;
-            decimal monthlyPayment = CalculateMonthlyPayment(loan);
-
-            totalPayment = loan.LoanTerm * monthlyPayment;
-
-            return totalPayment;
-        }
-
-        public static decimal CalculateMonthlyPayment(Loan loan)
-        {
-            decimal monthlyPayment;
-            double intRate = (loan.InterestRate / 100) / 12;
-
-            monthlyPayment = (loan.LoanAmount * (decimal)intRate) / (decimal)(1 - (Math.Pow((1 + intRate), -loan.LoanTerm)));
-
-            return monthlyPayment;
-        }
-
         public static void PrintLoanAmortizationSchedule(Loan loan)
         {
             var balance = loan.LoanAmount;
             var monthlyPayment = CalculateMonthlyPayment(loan);
             var date = DateTime.Now;
 
-            date = DayOfMonthFromDateTime(date, loan.DayPayment);
-
             for (var i = 0; i < loan.LoanTerm; i++)
             {
+                date = DayOfMonthFromDateTime(date, loan.DayPayment);
+
                 var interest = (decimal)((loan.InterestRate / 100) / 12) * balance;
                 var principal = monthlyPayment - interest;
 
@@ -122,6 +102,26 @@ namespace LoanAmortizationApp
             }
 
             return new(dateTime.Year, dateTime.Month, day);
+        }
+
+        public static decimal CalculateTotalPayment(Loan loan)
+        {
+            decimal totalPayment;
+            decimal monthlyPayment = CalculateMonthlyPayment(loan);
+
+            totalPayment = loan.LoanTerm * monthlyPayment;
+
+            return totalPayment;
+        }
+
+        public static decimal CalculateMonthlyPayment(Loan loan)
+        {
+            decimal monthlyPayment;
+            double intRate = (loan.InterestRate / 100) / 12;
+
+            monthlyPayment = (loan.LoanAmount * (decimal)intRate) / (decimal)(1 - (Math.Pow((1 + intRate), -loan.LoanTerm)));
+
+            return monthlyPayment;
         }
 
         public static double CalculateEffectiveRate(double intRate)
