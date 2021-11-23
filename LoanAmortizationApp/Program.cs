@@ -49,6 +49,16 @@ namespace LoanAmortizationApp
 
                         PrintLoanAmortizationSchedule(loan);
 
+                        var totalPayment = CalculateTotalPayment(loan);
+                        var totalInterest = totalPayment - loan.LoanAmount;
+
+                        Console.WriteLine($"Is viso || {Math.Round(totalPayment, 2)} || {Math.Round(totalInterest, 2)} || {loan.LoanAmount} || -----");
+                        Console.WriteLine();
+
+                        var effectiveRate = CalculateEffectiveRate(loan.InterestRate);
+
+                        Console.WriteLine($"BVKKMN {Math.Round(effectiveRate, 2)} proc.");
+
                         break;
 
                     case 0:
@@ -103,6 +113,22 @@ namespace LoanAmortizationApp
         }
 
         public static DateTime DayOfMonthFromDateTime(DateTime dateTime, int day)
-            => new(dateTime.Year, dateTime.Month, day);
+        {
+            var lastDayOfMonth = DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
+
+            if (day > lastDayOfMonth)
+            {
+                day = lastDayOfMonth;
+            }
+
+            return new(dateTime.Year, dateTime.Month, day);
+        }
+
+        public static double CalculateEffectiveRate(double intRate)
+        {
+            var effectiveRate = (Math.Pow((1 + (intRate / 100) / 12), 12) - 1) * 100;
+
+            return effectiveRate;
+        }
     }
 }
